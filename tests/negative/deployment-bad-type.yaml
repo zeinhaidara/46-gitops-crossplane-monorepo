@@ -1,0 +1,18 @@
+# expect: at '/spec/replicas': got string
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad
+spec:
+  replicas: three
+  selector:
+    matchLabels:
+      app: bad
+  template:
+    metadata:
+      labels:
+        app: bad
+    spec:
+      containers:
+        - name: web
+          image: nginxinc/nginx-unprivileged:1.27.4-alpine

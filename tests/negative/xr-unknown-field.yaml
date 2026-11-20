@@ -1,0 +1,12 @@
+# expect: additional properties 'regoin' not allowed
+# A typo in a team's request must be caught before it reaches a cluster.
+apiVersion: platform.example.com/v1alpha1
+kind: StorageBucket
+metadata:
+  name: typo
+  namespace: team-a
+spec:
+  parameters:
+    regoin: eu-west-2
+    region: eu-west-2
+    costCenter: CC-1234
