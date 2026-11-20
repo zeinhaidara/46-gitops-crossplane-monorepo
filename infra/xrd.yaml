@@ -1,0 +1,40 @@
+# Defines the team-facing API: kind StorageBucket in group platform.example.com.
+apiVersion: apiextensions.crossplane.io/v2
+kind: CompositeResourceDefinition
+metadata:
+  name: storagebuckets.platform.example.com
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  scope: Namespaced
+  group: platform.example.com
+  names:
+    kind: StorageBucket
+    plural: storagebuckets
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                parameters:
+                  type: object
+                  properties:
+                    region:
+                      type: string
+                      enum: [eu-west-2, us-east-1]
+                    costCenter:
+                      type: string
+                      pattern: "^CC-[0-9]{4}$"
+                  required: [region, costCenter]
+              required: [parameters]
+            status:
+              type: object
+              properties:
+                bucketName:
+                  type: string

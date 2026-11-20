@@ -1,0 +1,40 @@
+# Crossplane v2: compositions are function pipelines (mode: Pipeline).
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: storagebucket-aws
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  compositeTypeRef:
+    apiVersion: platform.example.com/v1alpha1
+    kind: StorageBucket
+  mode: Pipeline
+  pipeline:
+    - step: patch-and-transform
+      functionRef:
+        name: function-patch-and-transform
+      input:
+        apiVersion: pt.fn.crossplane.io/v1beta1
+        kind: Resources
+        resources:
+          - name: bucket
+            base:
+              apiVersion: s3.aws.m.upbound.io/v1beta1
+              kind: Bucket
+              spec:
+                forProvider:
+                  region: eu-west-2
+                providerConfigRef:
+                  kind: ClusterProviderConfig
+                  name: default
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.parameters.region
+                toFieldPath: spec.forProvider.region
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.parameters.costCenter
+                toFieldPath: spec.forProvider.tags[cost-center]
+              - type: ToCompositeFieldPath
+                fromFieldPath: status.atProvider.id
+                toFieldPath: status.bucketName

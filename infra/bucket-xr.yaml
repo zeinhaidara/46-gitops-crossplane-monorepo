@@ -1,0 +1,15 @@
+# What a team writes. In Crossplane v2 a namespaced XR plays the role a claim
+# played in v1 (claims only exist for LegacyCluster XRDs).
+apiVersion: platform.example.com/v1alpha1
+kind: StorageBucket
+metadata:
+  name: reports
+  namespace: team-a
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    # The StorageBucket CRD only exists once the XRD above is established.
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  parameters:
+    region: eu-west-2
+    costCenter: CC-1234

@@ -1,0 +1,23 @@
+# Crossplane managed resources from infra/ (provider, function, XRD, composition, bucket).
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/zeinhaidara/46-gitops-crossplane-monorepo.git
+    targetRevision: main
+    path: infra
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

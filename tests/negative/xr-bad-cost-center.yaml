@@ -1,0 +1,10 @@
+# expect: does not match pattern '^CC-[0-9]{4}$'
+apiVersion: platform.example.com/v1alpha1
+kind: StorageBucket
+metadata:
+  name: bad-cc
+  namespace: team-a
+spec:
+  parameters:
+    region: eu-west-2
+    costCenter: "1234"

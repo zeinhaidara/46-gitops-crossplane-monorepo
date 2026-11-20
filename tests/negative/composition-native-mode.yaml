@@ -1,0 +1,16 @@
+# expect: at '/spec/mode': value must be 'Pipeline'
+# Crossplane v1-style native patch-and-transform (mode: Resources).
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: old-style
+spec:
+  compositeTypeRef:
+    apiVersion: platform.example.com/v1alpha1
+    kind: StorageBucket
+  mode: Resources
+  resources:
+    - name: bucket
+      base:
+        apiVersion: s3.aws.upbound.io/v1beta1
+        kind: Bucket

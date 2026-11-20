@@ -1,0 +1,8 @@
+# expect: could not find schema for Widget
+# No schema exists for this kind; validation must fail, not skip it.
+apiVersion: widgets.example.com/v1
+kind: Widget
+metadata:
+  name: no-schema
+spec:
+  size: 3

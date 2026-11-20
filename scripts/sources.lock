@@ -1,0 +1,14 @@
+# sha256  type  url
+# Every download is checked against this sha256 before use.
+# Core kinds (apiVersion v1) go under v1/ because kubeconform reads the
+# group from the apiVersion, and for "v1" that is "v1".
+9bc2bffbf71f261128533edaf912153948b7ff238f9a531ae6d34466ec287883  tool  https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-amd64.tar.gz
+cb9e31198d3f63b44848bd0afc4c8efc56e6cfef9c93a4a39a211940e6decd61  tool  https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.8.3/kustomize_v5.8.3_linux_amd64.tar.gz
+9888f2d756a2ce62b4fabdca885020b7b102eaea49991a910c389abd21001633  crd  https://raw.githubusercontent.com/crossplane/crossplane/v2.4.3/cluster/crds/apiextensions.crossplane.io_compositeresourcedefinitions.yaml
+12abd3a61381d1fba495776de5250424e5f0b9d3a7dad99cc52c60d7602a5276  crd  https://raw.githubusercontent.com/crossplane/crossplane/v2.4.3/cluster/crds/apiextensions.crossplane.io_compositions.yaml
+bde90f9ed498123e63d0ce21123a625cf1eceb50b1a86887f835b129f4fbba77  crd  https://raw.githubusercontent.com/crossplane/crossplane/v2.4.3/cluster/crds/pkg.crossplane.io_functions.yaml
+205f660040a78a297190a1940a7d36d57a61bd27ac6e6286964734570cb4ed91  crd  https://raw.githubusercontent.com/crossplane/crossplane/v2.4.3/cluster/crds/pkg.crossplane.io_providers.yaml
+9fd0da3e7097ad6d1af614fabd5c960bc7ddb00d768c3ef485a2fda6e9460df8  crd  https://raw.githubusercontent.com/argoproj/argo-cd/v3.6.2/manifests/crds/application-crd.yaml
+92b7a333a49124f5300095d3e7786ca2038b7d6e602c309f73e90631377e4b0a  k8s:apps/deployment_v1  https://raw.githubusercontent.com/yannh/kubernetes-json-schema/88b0235585da4efb0e4bc6cc00baccf0e327e54d/v1.34.0-standalone-strict/deployment-apps-v1.json
+8bf019854daed511e7c174896a898173fa65d88ec5937c687a37303d4cc9351b  k8s:v1/service_v1  https://raw.githubusercontent.com/yannh/kubernetes-json-schema/88b0235585da4efb0e4bc6cc00baccf0e327e54d/v1.34.0-standalone-strict/service-v1.json
+324fae677b98d1a6d54340db0c334d053e8ffbafceb3f73326e41de2610d5843  k8s:v1/namespace_v1  https://raw.githubusercontent.com/yannh/kubernetes-json-schema/88b0235585da4efb0e4bc6cc00baccf0e327e54d/v1.34.0-standalone-strict/namespace-v1.json
