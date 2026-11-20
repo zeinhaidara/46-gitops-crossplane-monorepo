@@ -3,3 +3,6 @@ memory/
 .vscode/
 .idea/
 *.log
+
+# Downloaded tools and schemas
+.cache/
