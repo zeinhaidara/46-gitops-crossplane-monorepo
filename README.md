@@ -19,6 +19,11 @@ Argo CD Application points at everything else.
 > Crossplane) that manages both infrastructure and applications from a
 > single monorepo.
 
+Why it matters: when infrastructure lives in one tool and applications in
+another, changes are reviewed in two places and drift in two ways. One
+repository that Argo CD syncs for both gives one review flow and one record
+of what should be running.
+
 Crossplane was chosen over the Terraform Controller: infrastructure becomes
 plain Kubernetes objects, so Argo CD treats infra and apps the same way.
 
